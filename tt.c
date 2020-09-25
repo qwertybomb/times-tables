@@ -3,6 +3,7 @@
 
 /* global variables */
 double pi;
+double const frame_movement = 0.0005; /* change this to make it go faster or slower */
 int const width = 600;
 int const height = 600;
 int const total_points = 1000;
@@ -116,7 +117,7 @@ void draw(SDL_Renderer *renderer)
 
     int i;
     double const r = width / 2.5;
-    static double factor = 2;
+    static double factor = 0;
 
     /* clear screen */
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -153,7 +154,7 @@ void draw(SDL_Renderer *renderer)
     }
 
     /* increase factor by a small amount every frame */
-    factor += 0.0001;
+    factor += frame_movement;
     SDL_RenderPresent(renderer);
     #undef CENTER
 }
